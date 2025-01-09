@@ -29,5 +29,11 @@ class SoftController extends Controller
         ]);
     }
 
+    public function dwonload(Software $Software) {
+        return view('layouts.linkdwonload', [
+            "Soft2" => $Software,
+        ]);
+    }
+
 
 }

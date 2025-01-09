@@ -70,12 +70,18 @@ class Coment extends Component
             'komentar' => $this->komentar,
             'coment_id' => $komentar->coment_id ? $komentar->coment_id : $komentar->id,
         ]);
-
+        
         // return redirect()->route('detailsoft', $this->Soft->slug);
+        $this->hideForm();
         $this->komentar =NULL;
         $this->nama =NULL;
         $this->email =NULL;
         $this->coment_id =NULL;
+    }
+
+     public function hideForm()
+    {
+        $this->coment_id = false; // Sembunyikan form
     }
     
     

@@ -114,9 +114,15 @@
             @endif
 
             @if (isset($coment_id) && $coment_id == $komen->id)
-                <form wire:submit.preven="reply"
-                    class=" p-6 mb-2 ml-6 lg:ml-12 text-base bg-zinc-50 rounded-lg dark:bg-zinc-950">
-
+                <form wire:submit.preven="reply" id="childComments"
+                    class="p-6 mb-2 ml-6 lg:ml-12 text-base bg-zinc-50 rounded-lg dark:bg-zinc-950 relative">
+                    <button wire:click="hideForm" type="button"
+                        class="bg-red-500 text-zinc-50 text-sm p-0.5 rounded absolute top-2 right-2">
+                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                    
                     <label for="input-group-1"
                         class="block mb-2 text-sm font-medium text-zinc-950 dark:text-zinc-50">Your Email</label>
                     <div class="relative mb-6">
@@ -130,7 +136,7 @@
                             </svg>
                         </div>
                         <input wire:Model.defer="email" type="email" id="input-group-1"
-                            class="bg-zinc-50  border-zinc-300 text-zinc-950 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full ps-10 p-2.5  dark:bg-zinc-950 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-zinc-50 dark:focus:ring-amber-500 dark:focus:border-amber-500"
+                            class="bg-zinc-50 border-zinc-300 text-zinc-950 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full ps-10 p-2.5 dark:bg-zinc-950 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-zinc-50 dark:focus:ring-amber-500 dark:focus:border-amber-500"
                             placeholder="youremail@.com" required>
                     </div>
 
@@ -145,7 +151,7 @@
                             </svg>
                         </div>
                         <input wire:Model.defer="nama" type="text" id="input-group-1"
-                            class="bg-zinc-50  border-zinc-300 text-zinc-950 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full ps-10 p-2.5  dark:border-zinc-600 dark:bg-zinc-950 dark:placeholder-zinc-400 dark:text-zinc-50 dark:focus:ring-amber-500 dark:focus:border-amber-500"
+                            class="bg-zinc-50 border-zinc-300 text-zinc-950 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full ps-10 p-2.5 dark:border-zinc-600 dark:bg-zinc-950 dark:placeholder-zinc-400 dark:text-zinc-50 dark:focus:ring-amber-500 dark:focus:border-amber-500"
                             placeholder="Your name" required>
                     </div>
 
@@ -153,7 +159,7 @@
                         class="py-2 px-4 mb-4 mt-4 bg-zinc-50 rounded-lg rounded-t-lg border border-zinc-400 dark:bg-zinc-950 dark:border-amber-500">
                         <label for="comment" class="sr-only">Your comment</label>
                         <textarea wire:Model.defer="komentar" id="comment" rows="6"
-                            class="form-control px-0 w-full text-sm text-zinc-950 border-0 focus:ring-0 bg-zinc-50  dark:text-zinc-50 dark:placeholder-zinc-400 dark:bg-zinc-950"
+                            class="form-control px-0 w-full text-sm text-zinc-950 border-0 focus:ring-0 bg-zinc-50 dark:text-zinc-50 dark:placeholder-zinc-400 dark:bg-zinc-950"
                             placeholder="Write a comment..." required></textarea>
                     </div>
 
@@ -161,8 +167,8 @@
                         class="inline-flex items-center py-2.5 px-4 text-md font-bold text-center text-zinc-50 bg-amber-500 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
                         Post comment
                     </button>
-
                 </form>
+
             @endif
         @endforeach
 

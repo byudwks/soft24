@@ -27,7 +27,7 @@
                      <h1 class="text-2xl text-center font-bold mb-2 text-zinc-950 dark:text-zinc-50">
                         {{ $Soft->name }} 
                     </h1>
-                    <h5 class="text-md text-center mx-3  text-zinc-950 dark:text-amber-500">{{ $Soft->os->name}}</h5>
+                    <h5 class="text-md text-center mx-3 text-amber-500">{{ $Soft->os->name}}</h5>
                     <h5 class="text-md italic text-center mb-5 mt-2 text-zinc-400">Version : {{ $Soft->version }}</h5>
 
 
@@ -44,6 +44,22 @@
 
                     <div class="porse md:prose-sm lg:prose-sm px-3 text-justify list-disc list-inside text-zinc-950 dark:text-zinc-50 ">
                             {!! str($Soft->how_install)->sanitizeHtml() !!}
+                    </div>
+
+                    <div class="justify-items-center flex-row bg-zinc-50 dark:bg-zinc-950 h-52 mt-5">
+                        <h2 class="text-lg font-bold mb-4 pt-4 uppercase text-zinc-950 dark:text-amber-500">
+                            Link Download Resmi
+                        </h2>
+                        <div  >
+                            <a href="/dwonload/{{ $Soft->slug }}" type="button" class=" bg-amber-500  hover:bg-amber-600 text-white dark:text-white font-bold py-2 px-4 rounded-lg mb-4">
+                                Download
+                            </a>
+                        </div>
+
+                        <span  class="text-sm text-center text-zinc-400 italic">
+                            Note : Link Download Akan Muncul Setelah Iklan Selesai
+                        </span>
+
                     </div>
                     
                     @livewire('Software.coment', ['id' => $Soft->id])

@@ -27,6 +27,8 @@ use Filament\Forms\Components\Textarea;
 use Illuminate\Support\Str;
 use Filament\Forms\Get;
 use App\Models\Os;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\TernaryFilter;
  
 
 class SoftwareResource extends Resource
@@ -127,14 +129,19 @@ class SoftwareResource extends Resource
                             ->required()
                             ->label('Os'),
         
-                        TextInput::make('link_1')
-                            ->url(),
-        
-                        TextInput::make('link_2')
-                            ->url(),
-        
-                        TextInput::make('link_3')
-                            ->url(),
+                        RichEditor::make('link')
+                            ->toolbarButtons([
+                                    'bold',
+                                    'bulletList',
+                                    'h2',
+                                    'h3',
+                                    'italic',
+                                    'link',
+                                    'redo',
+                                    'underline',
+                                    'undo'])
+                            ->required()
+                            ->label('Link Download'),
                         
                     ])
                     ->columns(1),
@@ -152,10 +159,9 @@ class SoftwareResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-
-            ->query(Software::orderBy('created_at', 'desc')) 
-            ->columns([
-
+        
+        ->query(Software::orderBy('created_at', 'desc')) 
+        ->columns([
                 TextColumn::make('row_number')
                     ->label('No.')
                     ->rowIndex(),
@@ -171,10 +177,8 @@ class SoftwareResource extends Resource
                     ->label('Publish')
                
             ])
-            
-
             ->filters([
-                //
+                
             ])
             ->actions([
                 Tables\Actions\DeleteAction::make(),
@@ -182,7 +186,7 @@ class SoftwareResource extends Resource
             ])
             ->bulkActions([
                     Tables\Actions\DeleteBulkAction::make(),
-            ]);
+        ]);
     }
 
     public static function getRelations(): array

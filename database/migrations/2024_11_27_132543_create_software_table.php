@@ -19,9 +19,7 @@ return new class extends Migration
             $table->text('how_install');
             $table->string('icon')->nullable();
             $table->string('image')->nullable();
-            $table->string('link_1')->nullable();
-            $table->string('link_2')->nullable();
-            $table->string('link_3')->nullable();
+            $table->string('link');
             $table->string('version');
             $table->string('size');
             $table->timestamps();
